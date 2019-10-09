@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 19:37:16 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/10/09 23:41:32 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/10/10 00:03:02 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,5 @@ t_avlt		*rotater(t_avlt *);
 t_avlt		*rotatel(t_avlt *);
 void		remove_n(t_avlt **, void *, int (*cmp)(void *, void *),
 void (*del)(void *));
-void		appt(void *);
-int			tr_int_cmp(void *, void *);
-t_avlt		*add_ar_to_tree(int *, size_t);
 
 #endif
