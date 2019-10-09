@@ -6,12 +6,13 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 19:37:16 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/10/09 13:49:53 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/10/09 22:33:57 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef AVLT_H
 # define AVLT_H
+#include <unistd.h>
 
 typedef struct	s_avlt
 {
@@ -36,5 +37,8 @@ void		balance(t_avlt **);
 t_avlt		*rotater(t_avlt *);
 t_avlt		*rotatel(t_avlt *);
 void		remove_n(t_avlt **, void *, int (*cmp)(void *, void *));
+void		appt(void *);
+int			tr_int_cmp(void *, void *);
+t_avlt		*add_ar_to_tree(int *, size_t);
 
 #endif
