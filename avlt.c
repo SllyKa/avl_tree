@@ -6,14 +6,14 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 20:05:01 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/10/09 14:02:48 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/10/09 23:44:01 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "avlt.h"
 
-t_avlt      *create_node(void *item)
+t_avlt      *create_node(void *item, void *(*ins)(void *))
 {
     t_avlt  *new_node;
 
@@ -21,26 +21,27 @@ t_avlt      *create_node(void *item)
         return (NULL);
     new_node->left = NULL;
     new_node->right = NULL;
-    new_node->item = item;
+	new_node->item = ins(item);
 	new_node->height = 1;
     return (new_node);
 }
 
-void        add_node(t_avlt **root, void *item, int (*cmp)(void *, void *))
+void        add_node(t_avlt **root, void *item, int (*cmp)(void *, void *),\
+void *(*ins)(void *))
 {
     if (!root)
         return ;
     if (!*root)
 	{
-        if(!(*root = create_node(item)))
+        if(!(*root = create_node(item, ins)))
             return ;
 	}
 	else
 	{
     	if (cmp(item, (*root)->item) >= 0)
-        	add_node(&(*root)->right, item, cmp);
+        	add_node(&(*root)->right, item, cmp, ins);
     	else
-        	add_node(&(*root)->left, item, cmp);
+        	add_node(&(*root)->left, item, cmp, ins);
 	}
 	balance(root);
 }

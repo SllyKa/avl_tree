@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 19:37:16 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/10/09 22:33:57 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/10/09 23:41:32 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ typedef struct	s_avlt
 	void		*item;
 }				t_avlt;
 
-t_avlt      *create_node(void *);
-void		add_node(t_avlt **, void *, int (*cmp)(void *, void *));
+t_avlt      *create_node(void *, void *(*ins)(void *));
+void		add_node(t_avlt **, void *, int (*cmp)(void *, void *),\
+void *(*ins)(void *));
 int			height(t_avlt *);
 void		set_height(t_avlt *);
 void		pre_order(t_avlt *, void (*appt)(void *));
@@ -36,7 +37,8 @@ int			balancef(t_avlt *);
 void		balance(t_avlt **);
 t_avlt		*rotater(t_avlt *);
 t_avlt		*rotatel(t_avlt *);
-void		remove_n(t_avlt **, void *, int (*cmp)(void *, void *));
+void		remove_n(t_avlt **, void *, int (*cmp)(void *, void *),
+void (*del)(void *));
 void		appt(void *);
 int			tr_int_cmp(void *, void *);
 t_avlt		*add_ar_to_tree(int *, size_t);
